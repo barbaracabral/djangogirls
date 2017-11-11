@@ -8,16 +8,20 @@
         </div>
 
         <div>
-            <h2><a href="">Code Pen.io</a></h2>
+            <h2><a href="">Code Pen.io - Static Post</a></h2>
             <p>Este é o meu primeiro post; Code pen.io é um site bem bacana pra aprender css e animação</p>
             <p>Site: https://codepen.io/</p>
             <p>published: 11.11.2017, 12:14</p>
         </div>
 
-        <div>
-            <h2><a href="">My second post</a></h2>
-            <p>Eita nóis!</p>
-            <p>published: 11.11.2017, 13:14</p>
-        </div>
+        {% for post in posts %}
+            <div>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <p>published: {{ post.published_date }}</p>
+            </div>
+        {% endfor %}
+        <!-- {{ posts }} -->
+
     </body>
 </html>
