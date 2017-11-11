@@ -1,27 +1,13 @@
-<html>
-    <head>
-        <title>Bárbara's blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Django Girl's Blog - Bárbara</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        <div>
-            <h2><a href="">Code Pen.io - Static Post</a></h2>
-            <p>Este é o meu primeiro post; Code pen.io é um site bem bacana pra aprender css e animação</p>
-            <p>Site: https://codepen.io/</p>
-            <p>published: 11.11.2017, 12:14</p>
-        </div>
-
-        {% for post in posts %}
-            <div>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
-                <p>published: {{ post.published_date }}</p>
-            </div>
-        {% endfor %}
-        <!-- {{ posts }} -->
-
-    </body>
-</html>
+{% block content %}
+  {% for post in posts %}
+  <div class="post">
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <div class="date">
+      <p>published: {{ post.published_date }}</p>
+    </div>
+    <p>{{ post.text|linebreaksbr }}</p>
+  </div>
+  {% endfor %}
+{% endblock %}
